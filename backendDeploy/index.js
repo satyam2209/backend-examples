@@ -79,3 +79,13 @@ app.listen(process.env.PORT, () => {
 // for production ready application we secure private variables through env file
 // as like in this application we access PORT through .env file
 // and we not shown .env (environment variable) file in github or publicly
+
+// --------------------------------
+// first command
+// npm init
+
+// second command
+// npm install express
+
+// third command
+// npm install dotenv
