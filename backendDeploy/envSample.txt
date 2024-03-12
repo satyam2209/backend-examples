@@ -1,0 +1,4 @@
+PORT=8080
+
+//  .env file never shown publicy because in it we keep our private variables
+// this is the sample file of .env
