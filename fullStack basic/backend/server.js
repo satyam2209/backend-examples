@@ -4,6 +4,13 @@
 // other for common js we add it as const express = require("express");
 import express from "express";
 const app = express();
+
+// app.use(express.static('build-folder-name'))   
+// make build of my react app and use name of the folder and paste those folder in my backend main folder
+// and make build then use cra command "npm run build" and whenever new changes in frontend then make new build and paste new build folder
+// but this upper case is bad practice but uses is most of the company
+
+
 //if process.env.PORT is not defined then it will take 4000 in local machine
 //but in production it will take process.env.PORT otherwise the app is not running
 const port = process.env.PORT || 4000;
@@ -12,7 +19,9 @@ app.get("/", (req, res) => {
   res.send("server is ready");
 });
 
-app.get("/jokes", (req, res) => {
+// app.get("/jokes", (req, res) => {
+  // directly writing /jokes is not a best practice always use best practice like /api/jokes or more
+app.get("/api/jokes", (req, res) => {
   const jokes = [
     {
       id: 1,
