@@ -1,0 +1,26 @@
+extends layouts/main-layout.pug
+
+block styles 
+    link(rel="stylesheet", href="/css/product.css")
+
+block content 
+    main
+        if prods.length > 0
+            .grid
+                each product in prods
+                    article.card.product-item
+                        header.card-header
+                            h1.product-title #{product.title}
+
+                        div.card-image
+                            img(src="https://media.istockphoto.com/id/148467235/photo/laptop-with-clipping-path.jpg?b=1&s=612x612&w=0&k=20&c=-ENzGmNqR3ycLN6NPyH7nXma8ISgd3ImyxFU9V0cdLU=", alt="Laptop")
+
+                        div.card-content
+                            h2.product-price $19.99
+                             p.product-description A very interesting book about so many even more interesting things!
+
+                        div.card-actions
+                            button.btn Add to Cart 
+
+        else 
+            h1 No Product Available     
