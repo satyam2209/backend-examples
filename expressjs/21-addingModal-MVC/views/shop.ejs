@@ -1,0 +1,39 @@
+<%- include('includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/product.css" />
+  </head>
+  <body>
+<%- include('includes/navigation.ejs') %>
+
+    <main>
+      <% if (prods.length > 0) { %>
+
+      <div class="grid">
+        <% for(let product of prods) { %>
+        <article class="card product-item">
+          <header class="card-header">
+            <h1 class="product-title"><%= product.title %></h1>
+          </header>
+          <div class="card-image">
+            <img
+              src="https://media.istockphoto.com/id/148467235/photo/laptop-with-clipping-path.jpg?b=1&s=612x612&w=0&k=20&c=-ENzGmNqR3ycLN6NPyH7nXma8ISgd3ImyxFU9V0cdLU="
+              alt="Laptop"
+            />
+          </div>
+          <div class="card-content">
+            <h2 class="product-price">$19.99</h2>
+            <p class="product-description">
+              A very interesting book about so many even more interesting
+              things!
+            </p>
+          </div>
+          <div class="card-actions">
+            <button class="btn">Add to Cart</button>
+          </div>
+        </article>
+        <% } %>
+      </div>
+      <% } else { %>
+        <h2>Product not found!</h2>
+      <% } %>
+    </main>
+  <%- include('includes/end.ejs') %>
