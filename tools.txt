@@ -1,0 +1,253 @@
+-- SOME TOOLS FOR BACKEND ----
+
+// node.js
+// express.js
+// mongoDB
+
+other than this some are
+
+=> Moon Modeler (paid)   (it is a data modeling tool for MongoDB and noSQL)
+// data modeling => defined structure of data
+
+=> eraser.io
+
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------CODING SCENCE VIDEOS-----------------------------
+
+16th video
+// npm for installing different packages
+// 1st run npm init (for npm itself installation package.json)
+in package.json 
+
+if we write "start" : "node (file-name).js" then we simply write npm start
+but if we write any other keyword like
+"superman" : "node (file-name).js"  then it compulsory to write npm run superman
+
+
+17th video
+// when we run npm init then we have package.json and then we install third party packages
+
+local project (code files in projects)
+
+our code (our code in those code files)
+
+core node packages  (when install node.js then it gives some inbuilt packages as like 'fs', 'http' for this inbuilt packages we not need to install any other third party packages)
+
+third party packages (we installthird party packages for easy our work and reduce our code, like express.js)
+
+
+install nodemon package  (npm i nodemon)
+(when in some changes in backed code then it need to restart but due to this package when we some changes then nodemon automitaclly start server we not need to restart it manually)
+
+when we install packages then commonly we use some flags like
+--save (need for both development and production also)
+--save-dev (it is need only for development process and not go in build or production) 
+-g (it install globally and from anywhere we use this)
+
+All packages are installed in node_modules
+and all the packages goes to package.json with its version
+and package-lock.json , lock its version so that when other user download node_modules with npm i then in other user same version of packages are downloaded.
+
+
+
+18th video
+// syntax error
+// runtime error
+
+19th video
+// using debugger in vscode
+
+22th video
+// install express (npm install express --save) 
+
+23th video
+// middleware between request and response
+
+request => middleware => middleware => response
+
+in middleware the function run like (req, res, next) => {}
+if going to 1st middleware to 2nd middleware then calling next function
+and here at middleware we also use 3rd party packages
+
+24th video
+// plugging middleware
+
+it is after 
+const app = express();
+and before
+const server = http.createServer(app);
+
+send is utilty method which called by res
+ex:- res.send()
+
+25th video
+// behind the SCENCE expressjs with its github repository
+
+26th video
+// handling routes in expressjs
+
+
+35th VIDEOS
+// templating engines
+// PUG, EJS, HandleBars
+// npm i pug ejs express-handlebars
+
+by default handlebars not supportes express then after handlebars release new community with named express-handlebars for supporting and integrate with express
+
+
+
+
+// 47th videos
+// MVC (Model View Controller)
+
+=> separation of concern
+
+each part of code is only responsible for their own task.
+(diffrent functionality in different files)
+
+Model
+-------
+
+=> Model will represent data in your code (login with data)
+=> It allows you to work with the data 
+=> Example saving data to file/database, fetching data from file/databases
+   or sometimes from memory.
+=> Does Care about application logic.
+
+
+views
+-------
+
+=> The output we see on the UI through rendering our template using any
+   templating engine.
+=> views are responsible for what user see on the screen.
+=> Responsible for rendering the right content in html document and 
+   sending that back to user
+=> Decoupled from our application
+=> Have minor integration regarding the data we inject into out templating
+   engine to generate these views.
+=> Does not care about application logic like model does.
+
+Controller
+------------
+
+=> controller are just connection point between the model and views.
+=> It is a middleman between the model and views (contains-in-between logic).
+=> controller works with model (triggering logic for saving/fetching data)
+=> it also works for passing the data into views which was fetched in the model.
+
+routes
+---------
+
+=> Routes also fits in this picture
+=> It defines upon on which path, for which http methods, which controller should
+   execute.
+=> Then the controller is responsible for defining the thing that which model to work
+   with and which view to render.
+=> This is the pattern it get follows
+=> In express app, we heavily relies on middleware concept.
+=> So controller are kind of split up into multiple middleware function
+   or some of its logic is separated and moved to another middleware functions
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+// DIFFERNECE BETWEEN LIBRARY AND FRAMEWORK
+
+FRAMEWORK
+==============
+Pre-defined structure
+set of rules and guidelines
+complete solution for building webApp
+   - Tools for Components
+   - Routings
+   - Forms
+   - State Management
+
+Provide architecture
+
+
+LIBRARY
+============
+collection of reusable code node_modules
+more control and flexibility
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+-------------------------------------JS NOTES----------------------------------------------------------------------
+
+
+
+virtual dom
+
+react fiber is behind the updation of virtual dom
+
+when the webpage layout is completed and the javascript injected successfully this process known hydration
+
+// documentation of react fiber
+https://github.com/acdlite/react-fiber-architecture 
+
+reconciliation
+-----------------------
+
+the algorithm react uses to differentiate one tree with another to determine which parts need to be changed 
+//( one tree is web browser dom   and another is react virtual dom)
+
+------------------------
+
+react hooks
+props
+
+------------
+onClick want full function,  not function return value
+
+//  (bgChanger)  Actually the initial state has color olive and the reload technically resets the state. So, it gets the olive color.
+
+-----------React Hooks-------------
+
+useCallback----------
+
+useCallback is react hook that lets you cache(keep in memory) a function definition between re-renders.
+
+// useCallback  memorize  the function
+
+const  cachedFn = useCallback(fn, dependencies)
+
+useRef (when i want reference of something then use  useRef)
+
+-------------
+
+mostly API call are in string format
+
+------react router-----------

@@ -1,0 +1,65 @@
+virtual dom
+
+
+react fiber is behind the updation of virtual dom
+
+
+when the webpage layout is completed and the javascript injected successfully this process known hydration
+
+
+// documentation of react fiber
+https://github.com/acdlite/react-fiber-architecture 
+
+
+reconciliation
+-----------------------
+
+
+the algorithm react uses to differentiate one tree with another to determine which parts need to be changed 
+//( one tree is web browser dom   and another is react virtual dom)
+
+
+------------------------
+
+
+react hooks
+props
+
+
+------------
+onClick want full function,  not function return value
+
+
+//  (bgChanger)  Actually the initial state has color olive and the reload technically resets the state. So, it gets the olive color.
+
+
+-----------React Hooks-------------
+
+
+useCallback----------
+
+
+useCallback is react hook that lets you cache(keep in memory) a function definition between re-renders.
+
+
+// useCallback  memorize  the function
+
+
+const  cachedFn = useCallback(fn, dependencies)
+
+
+useRef (when i want reference of something then use  useRef)
+
+
+-------------
+
+
+mostly API call are in string format
+
+
+------react router-----------
+
+
+
+
+

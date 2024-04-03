@@ -1,0 +1,30 @@
+<!-- code to fine tab switch or browser minimized -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hie code</h1>
+    <script>
+        if (typeof document.hidden !== "undefined") {
+    // Add event listener for visibility change
+    document.addEventListener("visibilitychange", function() {
+        // Check if the document is hidden
+        if (document.hidden) {
+            // Document is minimized
+            console.log("Browser window is minimized");
+        } else {
+            // Document is visible
+            console.log("Browser window is not minimized");
+        }
+    });
+} else {
+    console.log("Page Visibility API is not supported");
+}
+    </script>
+</body>
+</html>

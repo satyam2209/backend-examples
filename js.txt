@@ -1,0 +1,1453 @@
+"use strict'"    // treat all js code as newer version
+
+
+mdn documentation is recomended
+
+
+tc39.es is original documentation of ecmascript
+
+
+DATATYPES
+
+
+PRIMITIVE
+-----------------
+number
+bigint
+string => ""
+boolean => true/false
+null
+undefined
+symbol => uniqness
+
+
+NON PRIMITIVE (REFRENCE TYPE)
+------------------------
+Array
+Functions
+Object
+
+
+
+
+
+
+
+
+note:   typeof null => object
+
+
+               typeof(undefined) => undefined
+
+
+"83" => Number("83") => 83
+
+
+"83ab" => Number("83ab") => NaN
+
+
+Number(null) => 0
+Number(undefined) => NaN
+Number(true) => 1
+Number(false) => 0
+
+
+Note: but when you check data type then it shows number
+ 
+        typeof(Number("83ab")) => number
+       
+       typeof NaN => number
+
+
+OPERATIONS
++ add
+- subtarct
+*  multiply
+**  power of
+/  divide
+%  modulus
+
+
+"hello" + " satyam" => hello satyam
+
+
+"1 " + 2  =>  12
+1 + "2"  => 12
+"1"  +   2   +   3   =>  123
+1   +   2    +   "3"  =>   33
+1  +  "2"   +   3    =>   123
+
+
+
+
+console.log(+true) => 1  // this is a conversion with prefix +
+
+
+COMPARISON
+
+
+"2" > 1   => true
+"02" > 1  => true
+
+
+null > 0     // false
+null == 0  // false
+null >= 0   // true
+
+
+the reason is that an equality check == and comparisons  >  <   >=   <=   works differently.
+comparison convert null to a number, treating it as 0 thats why   null > 0 is false and null >= 0 is true
+
+
+In JavaScript, jab hum == (equal to) ya === (strictly equal to) operators ka use karte hain toh voh values ke types ko dekhte hain.
+
+Jab aap null == 0 likhte hain, toh JavaScript me yeh type coercion hota hai. Lekin null ek special case hai, isko number me convert nahi kiya jata. Isliye null == 0 false hota hai kyunki null ko 0 me convert nahi kiya ja sakta.
+
+Jab aap null > 0 likhte hain, toh yeh bhi type coercion hota hai, lekin null ko 0 me convert kar diya jata hai. Fir comparison hota hai, lekin 0 greater than 0 nahi hota, isliye yeh expression false hota hai.
+
+Aur jab aap null >= 0 likhte hain, toh yeh bhi type coercion hota hai, lekin null ko 0 me convert kar diya jata hai. Fir comparison hota hai, aur 0 greater than or equal to 0 hota hai, isliye yeh expression true hota hai.
+
+Toh, null == 0 me null ko convert nahi kiya jata, lekin null > 0 aur null >= 0 me null ko 0 me convert kar diya jata hai.
+
+
+
+
+
+
+datatype example 
+-----------------------
+
+
+const id = Symbol('123')
+const anotherId = Symbol('123')
+
+
+both ids are different because of symbol
+
+
+const bigNumber = 2324234545345654n;
+
+
+
+
+const heros = ["Shaktiman", "Superman", "Batman"]    // Arrays
+ 
+let myObj = {
+         name = "satyam",
+        age = 22,
+}
+
+
+let myFunction = function(){
+       console.log("hie satyam");
+} 
+
+
+ 
+
+
+MEMORY
+---------------
+
+
+stack memory used in all primitive data types (making copy) also known DEEP COPY
+
+
+heap memory used in all reference data types (pointing reference of variables) also known SHALLOW COPY
+
+
+
+
+STRING
+-----------
+
+
+const name = "Satyam";
+
+
+const lastName = new String("Singh");
+
+
+checkout all strings method -----------
+
+
+
+
+
+
+NUMBERS
+----------------
+
+
+const score = 400
+
+
+const score = new Number(400);
+
+
+checkout all Number method
+
+
+MATH OBJECT checkout its all method------
+
+
+RANDOM NUMBER EXAMPLE
+--------------------------------------------
+
+
+math.random gives number between 0 and 1
+
+
+console.log(Math.floor(Math.random() *  10 ) + 1 )  // for number above 0
+
+
+const min = 10
+const max = 20
+
+
+console.log(Math.floor(Math.random() * (max - min + 1 )) + min )      // gives random number between 10 and 20
+
+
+
+
+DATE   AND   TIME   METHODS
+------------------------------------------
+
+
+let myDate = new Date();
+
+
+then checkout all date methods
+
+
+
+
+ARRAYS
+-----------
+
+
+const  myArr = [0, 1, 2, 3, 4, 5]
+const heroes = ["Shaktiman",  "Nagraj",  "Hulk"]
+
+
+const myArr2 = new Array(1, 2, 3, 4, 5, 6)
+
+
+checkout all the method of array
+
+
+
+
+OBJECTS
+--------------
+
+
+1. Literal  (Non singleton object)
+2. Constructor   =>   when we create object by constructor then the object is type of singleton
+    // Ex.   Object.create()
+
+
+
+
+// OBJECT LITERALS
+------------------------------
+
+
+Ex-     const  jsUser  = {
+                     
+                   name : "Satyam",
+                  "full name": "Satyam Singh",
+                   age : 23,
+                   gender : "Male",
+}
+
+
+console.log(jsUser.name);
+
+
+console.log(jsUser["name"]);
+
+
+console.log(jsUser."full name");  // this is incorrect
+
+
+console.log(jsUser["full name"]);
+
+
+=>  JS take key as a string  (name is key , and satyam is value)
+
+
+change the value of object
+---------------------------------
+
+
+jsUser.name =  "Rajan";
+
+
+but when we not want to change the value then we freeze the object
+-----------------------------------------------------------------------------------------
+
+
+Object.freeze(jsUser);     // after this we are unable to change the value of user
+
+
+
+
+
+
+Note :   Define a symbol and create a object and using symbol as a object key
+
+
+const mySym = Symbol(key1);
+
+
+const jsUser = {
+
+        name : "Satyam",
+       "full name": "Satyam Singh",
+        [mySym] = "myKey1"
+        age : 23,
+       gender : "Male",
+}
+
+
+console.log(jsUser[mySym]);
+
+
+-----------------------------------------function added in object-------------------------
+
+
+const jsUser = {
+
+name : "Satyam",
+"full name": "Satyam Singh",
+age : 23,
+gender : "Male",
+}
+
+jsUser.greeting = function(){
+console.log("hie satyam");
+}
+
+console.log(jsUser.greeting())
+
+jsUser.greetingTwo = function(){
+console.log(`hie ${this.name}`);
+}
+
+console.log(jsUser.greetingTwo())
+
+
+
+
+-----------Singleton Object(using constructor)---------------------
+
+
+Two ways to define object using constructor
+
+
+const newUser = new Object()
+
+const newUser = {}
+
+
+
+
+
+
+Ex:   const newUser = {}
+
+newUser.id = '123ab'
+newUser.name = 'satyam'
+newUser.age = 21
+
+newUser.regularUser = {
+email: "satyam123@gmail.com",
+userFullname: {
+fullName: {
+firstName: "Satyam",
+lastName: "Singh"
+}
+}
+}
+
+console.log(newUser)
+console.log(newUser.regularUser.userFullname.fullName.lastName)     // Nested Object
+
+
+--------merge two objects in one-------------------------------------------------------------------------
+
+
+const user = {
+name : "satyam",
+lname : "singh",
+}
+const userDetails = {
+age : 22,
+gender : "male",
+}
+// const mergeObj = {user, userDetails}
+
+const mergeObj1 = Object.assign({}, user, userDetails)       //  Object.assign(target, source)
+
+
+const mergeObj2 = {...user,  ...userDetails}     // spread operator
+
+console.log(mergeObj)
+
+
+console.log(Object.keys(user));     //  ["name",  "lname"]      (Array Types)
+
+
+console.log(Object.values(user));   // [ 'satyam', 'singh' ]
+
+console.log(Object.entries(user));  // [ [ 'name', 'satyam' ], [ 'lname', 'singh' ] ]
+
+
+console.log(user.hasOwnProperty("lname"));   // true
+
+
+--------------DESTRUCTURING   OBJECT-------------------------------------------------------
+
+
+const course = {
+courseName : "Javascript",
+price : 999,
+courseInstructor : "satyam Singh"
+}
+
+console.log(course.courseInstructor);
+
+const {courseInstructor} = course;
+
+console.log(courseInstructor);
+
+const {courseInstructor: instructor} = course;
+
+console.log(instructor);
+
+
+-------------------Function--------------------
+
+
+after return nothimg is excuted in function
+
+
+Example : also return static string in function
+
+
+function  loginUserMessage(username){
+
+
+          return `${username}  just logged in`
+
+
+}
+
+
+console.log(loginUserMessage("hitesh"));
+
+
+--------------------------
+
+
+function loginUserMessage(username){
+
+if(username === undefined)
+{
+console.log("please enter username");
+return
+}
+
+return `${username} just logged in`
+
+}
+
+console.log(loginUserMessage("hitesh")); 
+
+console.log(loginUserMessage()); 
+
+
+
+
+hitesh just logged in
+please enter username
+undefined
+
+
+-----------------------
+
+
+function loginUserMessage(username){
+
+if(username)
+{
+console.log("please enter username");
+return
+}
+
+return `${username} just logged in`
+
+}
+
+console.log(loginUserMessage("Hitesh"));
+
+
+please enter username
+undefined
+
+
+----------------------------------
+
+
+function loginUserMessage(username){
+
+if(!username)
+{
+console.log("please enter username");
+return
+}
+
+return `${username} just logged in`
+
+}
+
+console.log(loginUserMessage("Hitesh"));
+
+
+Hitesh just logged in
+
+
+console.log(loginUserMessage());
+
+
+please enter username
+undefined
+
+
+-----------------------------
+
+
+function loginUserMessage(username = "Sam"){
+
+return `${username} just logged in`
+
+}
+
+console.log(loginUserMessage("hitesh"));     // hitesh just logged in
+
+
+
+console.log(loginUserMessage()); // Sam just logged in
+
+
+
+
+-----------using rest operator--------------------
+
+
+function calculateCartPrice(num1){
+
+
+         return  num1
+}
+
+
+console.log(calculateCartPrice(220));      // 220
+
+
+console.log(calculateCartPrice(220, 400, 600)); // 220
+
+
+------------------------------
+
+
+function calculateCartPrice(...num1){                // using rest operator
+
+return num1
+
+}
+
+console.log(calculateCartPrice(220)); // 220
+
+console.log(calculateCartPrice(220, 400, 600)); // [220, 400, 600]
+
+
+
+------------------------
+
+
+function calculateCartPrice(val1, val2,  ...num1){ // using rest operator
+
+return num1
+
+}
+
+console.log(calculateCartPrice(220)); // []
+
+console.log(calculateCartPrice(220, 400, 600)); // [600]
+
+
+console.log(calculateCartPrice(220, 400, 600, 800)); // [600, 800]
+
+
+---------------------------------
+
+
+function calculateCartPrice(val1, val2, ...num1){ // using rest operator
+
+return val1, val2, num1
+
+}
+
+console.log(calculateCartPrice(220)); // []
+
+console.log(calculateCartPrice(220, 400, 600)); // [600]
+
+console.log(calculateCartPrice(220, 400, 600, 800)); // [600, 800]
+
+
+----------------------------------------------------
+
+
+function calculateCartPrice(val1, val2, ...num1){ // using rest operator
+
+// return `${val1}, ${val2}, ${num1}`
+return {val1, val2, num1}
+
+}
+
+console.log(calculateCartPrice());
+
+console.log(calculateCartPrice(220)); // []
+
+console.log(calculateCartPrice(220, 400, 600)); // [600]
+
+console.log(calculateCartPrice(220, 400, 600, 800)); // [600, 800]
+
+
+
+{ val1: undefined, val2: undefined, num1: [] }
+{ val1: 220, val2: undefined, num1: [] }
+{ val1: 220, val2: 400, num1: [ 600 ] }
+{ val1: 220, val2: 400, num1: [ 600, 800 ] }
+
+
+
+
+----------------Object in functions---------------------
+
+
+const user = {
+      
+           username : "Satyam",
+           age : 22,
+}
+
+
+function  handleObject(anyobject){
+           console.log(`username is ${anyobject.username} and his age is ${anyobject.age}`);
+}
+
+
+handleObject(user);
+
+
+handleObject({
+           username : "Satyam",
+           age : 22
+});                                                                              // also direct pass a object as an argument
+
+
+
+
+----------------Arrays in functions---------------------
+
+
+const  myArray = [10, 20, 30, 40, 50]
+
+
+function  passingArrayValue(getArray){
+      
+          return  getArray[2];
+}
+
+
+console.log(passingArrayValue(myArray));
+
+
+console.log(passingArrayValue([10, 20, 30, 40, 50]));
+
+
+
+
+-----------------THIS  IN  OBJECT-------------------------------------
+
+
+note :-     "this" refer to current context
+
+
+Ex:   const username = {
+username : "Hitesh",
+price : 999,
+
+welcomeMessage : function(){
+console.log(`${this.username} is a user`);
+console.log(this);
+}
+}
+
+username.welcomeMessage();      // Hitesh is user
+user.username = "Satyam";
+username.welcomeMessage();    // Satyam is user
+
+
+
+
+// output of console.log(this)
+{
+username: 'Hitesh',
+price: 999,
+welcomeMessage: [Function: welcomeMessage]
+}
+
+
+
+
+if we write "console.log(this);"  in global area then output is an empty object . // {}
+
+
+and if we write "console.log(this);"  in browser console then it indicates window object.
+
+
+browser global object is window
+
+
+
+
+
+-----------------THIS IN FUNCTION-------------------------------------
+
+
+---------normal function-----
+
+
+// normal and anonymous function working same as it is
+
+
+function user(){
+console.log(this);
+}
+
+user();
+
+
+output :    // this indicate many values  
+
+
+Object [global] {
+global: [Circular],
+clearInterval: [Function: clearInterval],
+clearTimeout: [Function: clearTimeout],
+setInterval: [Function: setInterval],
+setTimeout: [Function: setTimeout] {
+[Symbol(nodejs.util.promisify.custom)]: [Function]
+},
+queueMicrotask: [Function: queueMicrotask],
+clearImmediate: [Function: clearImmediate],
+setImmediate: [Function: setImmediate] {
+[Symbol(nodejs.util.promisify.custom)]: [Function]
+}
+}
+
+
+
+------anonymous function------
+
+
+function user(){
+let username = "satyam"
+console.log(this.username);
+console.log(this);
+}
+
+user();      // undefined
+
+
+-----arrow function----
+
+
+const user = () => {
+let username = "satyam"
+console.log(this.username);
+}
+
+user();    // undefined
+
+
+---------
+
+
+const user = () => {
+let username = "satyam"
+console.log(this);
+}
+
+user();    // {}    empty paranthesis
+
+
+
+
+
+
+---------- Arrow  Function -------------------
+
+
+1.  const addTwo = (num1, num2) => {
+return num1 + num2;
+}
+
+
+2.  const addTwo = (num1, num2) => num1 + num2;
+
+
+3.  const addTwo = (num1, num2) => (num1 + num2);   
+
+console.log(addTwo(3, 4));
+
+
+
+
+// if written in currly braces then return keyword is compulsory. and written in paranthesis or without paranthesis then return keyword is not allowing it automatically return
+
+
+// if return object without return keyword as like
+
+
+
+
+const addTwo = () => {username : "satyam"}     // undefined 
+const addTwo = () => ({username : "satyam"})   // paranthesis is compulsory
+
+
+
+
+----------IIFE--(Immediately  Invoked  Function Expressions)---------
+
+
+syntax -   ()();        // function defination and then execution       
+                                    // semicolon is compulsory for end the invoked function
+
+
+Ex:    (function chai(){
+console.log("Hie database");
+})()             
+
+
+// output :-    Hie  database
+
+
+Ex:   (function chai(){
+console.log("Hie database");
+})()
+
+
+(function chai2(){
+console.log("Hie database two");
+})()
+
+// output :- Error   because  we not use semicolon in 1st IIFE to stop the invoked function
+ 
+ Ex: (function chai(){
+console.log("Hie database");
+})();
+
+(function chai2(){
+console.log("Hie database two");
+})();
+
+
+//  output:-   Hie database two
+
+
+
+
+-------pass a parameter and argument in IIFE-------------
+
+
+Ex:   ((name)=>{
+console.log(`my name is ${name}`)
+})("Satyam");
+
+
+// output :-   my name is satyam
+
+
+
+
+named IIFE function also known NAMED IIFE
+and arrow and anyonymous IIFE function also known IIFE
+
+
+when write two IIFE together then semicolon is must compulsory
+
+
+
+
+-------------Control Flow-----------------
+
+
+const  balance  = 1000;
+
+
+if(balance > 500)   console.log(test);
+
+
+// for multiple lines use (comma , ) but semicolon is must compulsory
+
+
+if(balance > 500) console.log(test),
+
+console.log("test2");
+
+
+but it is not recommended
+
+
+--------- TRUTHY AND FALSY VALUES -------------
+
+
+// falsy values =>    false, 0, -0,  0n (big Int),  "" (empty string), null,  undefined,  NaN
+
+
+note:-  other than these falsy values all values are true
+
+
+[]  empty array  is truthy value
+{}  empty object is also truthy value
+function(){}   empty function is also a truthy value
+'false'
+'0'
+' '   {space in string}  is truthy value
+
+
+
+
+const emptyObj = {}
+
+if(Object.keys(emptyObj).length===0){
+console.log("empty object");
+}
+
+
+Imp Interview-------------
+
+
+false == 0   // true
+false == ""   // true
+0  ==  ""    // true
+
+
+
+
+------ Nullish  coalescing  operator (??):  null  undefined ----------------
+
+
+Ex:   let  val1;
+          val1 = 5 ?? 10;     // 5
+          val1 = null ?? 10;    // 10
+          val1 = undefined ?? 10; // 10
+          val1 = null ?? 10?? 20; // 10
+
+
+   console.log(val1);    
+
+
+
+
+--------- Ternary  Operator ----------
+
+
+Ex:    condition ?  true  :  false 
+
+
+
+
+
+
+---------- LOOPS  or   ITERATION -----------
+
+
+break  =>   for break the control flow
+
+
+continue =>  except me continue the loop
+
+
+------- HIGHER ORDER FUNCTION------------------
+
+
+------ FOR OF  on  ARRAY ----------
+
+
+Ex: const arr = [1, 2, 3, 4, 5]
+
+
+for (const num of arr)
+{
+   console.log(num);
+}
+
+
+Ex:  const greetings = "Hello world";
+for(const greet of greetings)
+{
+   console.log("Each char is ${greet}");
+}
+
+
+------MAP--------
+
+
+Ex:  const  map = new Map()
+map.set('IN',  "India")
+map.set('USA',  "United States of America")
+map.set('Fr',  "France")
+
+
+console.log(map);
+
+
+// output: =>  Map(3){
+           'IN' => 'India',
+           'USA' => 'United States of America',
+           'Fr'  =>  'France'
+     }
+
+
+if we rewrite any key again but output is always unique
+
+
+Ex: const map = new Map()
+map.set('IN', "India")
+map.set('USA', "United States of America")
+map.set('Fr', "France")
+map.set('IN', "India")
+
+console.log(map);
+
+
+
+=>  output is always unique
+// output: => Map(3){
+'IN' => 'India',
+'USA' => 'United States of America',
+'Fr' => 'France'
+}
+
+
+--- for of on MAP -----
+
+
+for (const  key  of  map){
+    console.log(key);
+}
+
+
+// output => 
+['IN',  'India']
+['USA', 'United States of  America']
+
+['Fr', 'France']
+
+
+
+----- another way ---------
+
+
+for (const  [key,  value]  of  map){
+console.log(key,  ":-",    value);
+}
+
+// output =>
+IN  :-  India
+USA :-  United States of America
+Fr :-  France
+
+
+---------- FOR OF on OBJECT ---------------
+
+
+
+
+const myObj = {
+     IN :  "India",
+     USA  :  "United States of America",
+     Fr : "France"
+}
+
+
+for (const [key, value] of myObj){
+console.log(key, ":-", value);
+}
+
+
+output :-   Object is not iterable
+//  for of not support object
+
+
+
+
+---- FOR  IN  on  OBJECT--------------
+
+
+const myObj = {
+IN : "India",
+USA : "United States of America",
+Fr : "France"
+}
+
+for (const key in myObj){
+console.log(key, myObj[key]);
+}
+
+
+// output:-   IN India
+USA United States of America
+Fr France
+
+
+
+
+
+---- FOR IN on ARRAY--------------
+
+
+const  programming  =  ["js",  "rb",  "py",  "java",  "cpp"]
+
+
+for (const key in programming){
+     console.log(key,    programming[key]);
+}
+
+
+//output:-    
+0 js
+1 rb
+2 py
+3 java
+4 cpp
+
+
+
+
+---- FOR IN on MAP-------------
+
+
+const map = new Map()
+map.set('IN', "India")
+map.set('USA', "United States of America")
+map.set('Fr', "France")
+map.set('IN', "India")
+
+
+for (const key in map){
+console.log(key);
+}
+
+
+output: =>    No  Output (Blank Page because not itertable)
+
+
+// typeof  map  =>  object
+
+
+
+
+------- FOR EACH-----------
+
+
+const  coding  = ["js",  "c",  "cpp",  "java"]
+
+
+coding.forEach( function(val){
+      console.log(val);
+} )
+
+
+
+
+coding.forEach( (item) => {
+console.log(item);
+} )
+
+
+
+---- if function defined then simple use function as callback in forEach-----
+
+
+function  printMe(item){
+     console.log(item)
+}
+
+
+coding.forEach(printMe);
+
+
+---- it also has access to "item" as well as "index" and a full "array"-----
+
+
+coding.forEach( (item,  index,  arr) => {
+console.log(item,  index,   arr);
+} )
+
+
+output:-   js 0 [ 'js', 'c', 'cpp', 'java' ]
+c 1 [ 'js', 'c', 'cpp', 'java' ]
+cpp 2 [ 'js', 'c', 'cpp', 'java' ]
+java 3 [ 'js', 'c', 'cpp', 'java' ]
+
+
+
+
+
+---- Iteration in mutiple objects in array -------
+
+
+const programmingLang = [
+{
+languageName : "Javascript",
+languageExtension : "js"
+},
+{
+languageName : "Java",
+languageExtension : "java"
+},
+{
+languageName : "Python",
+languageExtension : "py"
+}
+]
+
+programmingLang.forEach((item)=>{
+console.log(item.languageName);
+})
+
+
+
+
+-------- for each does not return value-----------
+
+
+const coding = ["js", "c", "cpp", "java"]
+
+const values = coding.forEach((items)=>{
+console.log(items);
+return items
+})
+
+console.log(values);  //  undefined because forEach  not return values.
+
+
+
+
+-------- FILTER ------------
+
+
+Ex:   const myNums = [1, 2, 3, 4, 5, 6, 7, 8]
+
+const values = myNums.filter((items)=> items > 4 )        //   Implicit  return  function
+
+console.log(values);      //  [5, 6, 7, 8]
+
+
+
+const values = myNums.filter((items)=> {           // explicit return function
+return items > 4
+} )
+
+console.log(values);    // [5, 6, 7, 8]
+
+
+------- without using filter do same from forEach------------
+
+
+const myNums = [1, 2, 3, 4, 5, 6, 7, 8]
+const newNums = []
+
+myNums.forEach((num)=> {
+if(num > 4)
+{
+newNums.push(num)
+}
+
+} )
+
+console.log(newNums);
+
+
+
+
+-----------MAP  FUNCTION-------
+
+
+const myNums = [1, 2, 3, 4, 5, 6, 7, 8]
+
+const values = myNums.map((num)=> num + 10 )
+
+console.log(values);    
+
+
+// output:-   
+ [
+11, 12, 13, 14,
+15, 16, 17, 18
+]
+
+
+
+
+--------------  chaining  of methods --------
+
+
+const myNums = [1, 2, 3, 4, 5, 6, 7, 8]
+
+const values = myNums
+.map((num)=> num * 10 )
+.map((num)=> num + 1 )
+.filter((num)=> num > 40 )
+
+console.log(values);
+
+
+// output :-   
+[ 41, 51, 61, 71, 81 ]
+
+
+----------- reduce function--------------
+
+
+Ex:   const myNums = [1, 2, 3]
+
+const myTotal = myNums.reduce( function(acc, currval){
+return acc + currval
+})
+
+console.log(myTotal);    //  6
+
+
+
+
+----using arrow function---
+
+
+const myNums = [1, 2, 3]
+
+const myTotal = myNums.reduce((acc, currval)=> acc + currval)
+
+console.log(myTotal);    // 6
+
+
+----- multiple objects in array using reduce ---------
+
+
+const shoppingCart = [
+{
+course : "Javascript",
+price : 2000
+},
+{
+course : "Java",
+price : 1000
+},
+{
+course : "Python",
+price : 4000
+}
+]
+
+const totalPrice = shoppingCart.reduce( (acc, currvel)=> acc + currvel.price ,0)
+
+console.log(totalPrice);
+
+
+--------------------
+
+
+-------------DOM  (Document  Object  Model)-------------------
+
+
+=>  window  is  global  object.
+
+
+console.log(window);
+console.log(window.document);
+console.log(document);
+console.dir(document);
+console.log(document.baseURI);
+console.log(document.links);      // give HTML Collection
+console.log(document.links[2]);    // give 2nd link of current page
+
+
+note:-    HTML  Collection is not an array
+
+
+------
+
+
+document.getElementById('firstHeading');
+
+
+document.getElementById('firstHeading').innerHTML = "<h1>Chai aur Code</h1>"
+
+
+
+
+
+
+
+
+----------- OOPS IN  JS----------------------
+
+
+----object-------
+ 
+collection of properties and methods
+
+
+------ parts of oop -----
+
+
+Object literal
+
+
+constructor function
+prototypes
+classes
+Instances (new, this)
+
+
+
+
+------- 4 pillars of oop ----------
+
+
+Abstraction
+Encapsulation
+Inheritance
+Polymorphism
+
+
+------------ Prototype in JS-----------------
+
+
+javascript  default behaviour is prototypal behaviour
+
+
+
+
+
+
+
+
+
